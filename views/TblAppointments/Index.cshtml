@@ -1,0 +1,203 @@
+﻿@model IEnumerable<SalonApp.Models.TblAppointments>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+
+
+<div class="container">
+
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Ralene's Beauty Salon</a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <div class="bs">
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Home", "AdminLogin", "Admin") </li>
+                            <li>@Html.ActionLink("Appointments", "Index", "TblAppointments")</li>
+                            <li>@Html.ActionLink("Admins", "Index", "TblAdmins")</li>
+                            <li>@Html.ActionLink("Comments", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Driver", "Index", "TblDriverForLogins")</li>
+                            <li>@Html.ActionLink("Refunds", "Index", "AdminProcessRefund")</li>
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Deliveries<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("View Current Deliveries", "IndexDeliveries", "TblDeliveries")</li>
+                                    <li>@Html.ActionLink("Manage Deliveries", "Index", "AdminManageDeliveries")</li>
+                                    <li>@Html.ActionLink("View Pending Delivery Requests", "Index", "AdminPendingDeliveries")</li>
+
+                                </ul>
+                            </li>
+
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Analyze Product<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("Sales tracker", "AdminOrders")</li>
+                                    <li>@Html.ActionLink("Quantity/Sales Statistics", "Index", "Chart")</li>
+                                    <li>@Html.ActionLink("Product Evaluation", "Index", "Stat")</li>
+                                    <li>@Html.ActionLink("Service Evaluation", "Index", "EvalTemp")</li>
+                                    <li>@Html.ActionLink("User Tracking", "Index", "sign")</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-shopping-cart"></i>Orders<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("Orders", "Index", "TblOrders")</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-user-circle"></i><span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("Logout", "LogOut", "CusLogin")"></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <main>
+        <style>
+
+            .buttonk {
+                width: 200px;
+                height: 30px;
+                outline: none;
+                border-radius: 48px;
+                background-color: rgb(176, 170, 170);
+                text-transform: uppercase;
+                font-weight: 500;
+                color: antiquewhite;
+                position: relative;
+                top: -10px;
+                margin-top: 20px;
+            }
+
+                .buttonk:hover {
+                    background-color: transparent;
+                    color: rgb(116, 114, 114);
+                    border: 2px solid rgb(116, 114, 114);
+                    cursor: pointer;
+                }
+
+
+            .buttone {
+                width: 230px;
+                height: 30px;
+                outline: none;
+                border-radius: 48px;
+                background-color: rgba(75, 192, 192, 0.2);
+                text-transform: uppercase;
+                font-weight: 500;
+                color: rgb(86, 135, 110);
+                position: relative;
+                top: -10px;
+                margin-top: 20px;
+            }
+
+                .buttone:hover {
+                    background-color: transparent;
+                    color: rgb(86, 135, 110);
+                    border: 2px solid rgb(86, 135, 110);
+                    cursor: pointer;
+                }
+        </style>
+
+        <div class="search">
+            @using (Html.BeginForm("Index", "TblAppointments", FormMethod.Post))
+            {
+                <div>
+                    <input type="date" id="datepicker" name="datepicker" />
+                    &emsp;&emsp;&emsp;
+                    <input type="submit" class="buttone" value="Search" />
+                </div>
+                <br />
+            }
+        </div>
+
+        <table class="content-table">
+            <thead>
+                <tr>
+                    <th class="pls">
+                        @Html.DisplayNameFor(model => model.Time)
+                    </th>
+                    <th class="pls">
+                        @Html.DisplayNameFor(model => model.Date)
+                    </th>
+                    <th class="pls">
+                        @Html.DisplayNameFor(model => model.Treatment)
+                    </th>
+
+                </tr>
+            </thead>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="pls2">
+                        @Html.DisplayFor(modelItem => item.Time)
+                    </td>
+                    <td class="pls2">
+                        @item.Date.ToString("dd/MMM/yyyy")
+                    </td>
+                    <td class="pls2">
+                        @Html.DisplayFor(modelItem => item.Treatment)
+                    </td>
+
+                    <td class="pls2">
+                        <button class="btn btn-danger">@Html.ActionLink("Cancel", "Delete", new { id = item.ID })</button>
+                    </td>
+
+                </tr>
+            }
+
+        </table>
+
+        @using (Html.BeginForm("ExportAppointments", "ExportAppointmentExcel", FormMethod.Post))
+        {
+            <div>
+                <button class="buttonk">
+                    Export To Excel
+                </button>
+            </div>
+        }
+
+        <div class="bleh">
+            <h4>Ralene's Beauty Salon</h4>
+            <h4>&copy;Copyright All rights reserved.</h4>
+        </div>
+    </main>
+</div>
+
+
+
+
+
+
+@section scripts
+ {
+    <script src="https://kit.fontawesome.com/e042ec49dd.js" crossorigin="anonymous"></script>
+    <link href="~/Content/style7.css" rel="stylesheet" />
+
+}

@@ -1,0 +1,54 @@
+﻿@model SalonApp.Models.TblAppointments
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+<div class="container">
+
+    <h2 class="b1">Cancel Appoinment</h2>
+    <h3>Sure you want to cancel?</h3>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Time)
+            @Html.DisplayFor(model => model.Time)
+        </dt>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+            @Html.DisplayFor(model => model.Date)
+        </dt>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Treatment)
+            @Html.DisplayFor(model => model.Treatment)
+        </dt>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.ID)
+
+        <p>
+            <input type="submit" value="Cancel" class="btn btn-danger" /> | @Html.ActionLink("Back", "Index", "TblAppointments")
+        </p>
+    }
+
+</div>
+
+
+
+<br />
+    
+
+   
+
+    @section scripts
+ {
+        <link href="~/Content/style6.css" rel="stylesheet" />
+    }

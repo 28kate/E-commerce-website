@@ -1,0 +1,51 @@
+﻿@model IEnumerable<SalonApp.Models.BlogPost>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Comments</h2>
+<br />
+
+@if (Session["TypeUser"].ToString() == "Customer")
+{
+    <p>
+        @Html.ActionLink("Write Your Own Comment", "Create")
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Body)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Body)
+            </td>
+        </tr>
+    }
+
+</table>
+
+<br />
+
+@if (Session["TypeUser"].ToString() == "Admin")
+{
+  <p>@Html.ActionLink("Back", "AdminLogin", "Admin") </p>
+}
+
+
+    @section Scripts {
+        <link href="~/Content/style9.css" rel="stylesheet" />
+        <script src="https://kit.fontawesome.com/e042ec49dd.js" crossorigin="anonymous"></script>
+    }

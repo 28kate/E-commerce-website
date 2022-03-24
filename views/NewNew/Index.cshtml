@@ -1,0 +1,115 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<body>
+    <link href="~/Content/style12.css" rel="stylesheet" />
+    <h1 id="name"> Treatment Of The Month</h1>
+    <div class="container">
+        <div class="product-img"></div>
+        <div class="product-img1"></div>
+        <div class="product-img2"></div>
+        <div class="product-desc">
+            <h1 class="no">Waxing</h1>
+            <h1 class="no1">Haircuts</h1>
+            <h1 class="no2">Massages</h1>
+            <h2 class="okay">R45</h2>
+            <h2 class="okay1">R15</h2>
+            <h2 class="okay2">R35</h2>
+            <p>Keep up with the latest trends and book our most popular, currently trending treatment now!</p>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+            <button>
+                @Html.ActionLink("Book Appointment", "Booking", "Appointment")
+            </button>
+        </div>
+    </div>
+
+
+
+    <div class="face">
+        <div class="eyes">
+            <div class="eye"></div>
+            <div class="eye"></div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    @Html.ActionLink("Back", "Create","Home")
+
+
+    <script>
+        document.querySelector("body").addEventListener("mousemove", eyeball);
+        function eyeball() {
+            var eye = document.querySelectorAll(".eye");
+            eye.forEach(function (eye) {
+                // x & y are variables and x represents the x coordinate of the mouse and y represents the coordinate of the mouse.
+                let x = eye.getBoundingClientRect().left + eye.clientWidth / 2;
+                let y = eye.getBoundingClientRect().top + eye.clientHeight / 2;
+                let radian = Math.atan2(event.pageX - x, event.pageY - y);
+                //   rot is a variable (short for rotate)
+                let rot = radian * (180 / Math.PI) * -1 + 270;
+                eye.style.transform = "rotate(" + rot + "deg)";
+            });
+        }
+    </script>
+
+    <script>
+        let local = localStorage;
+        let getItem = local.getItem('textinput');
+        let brave = document.querySelector('.product-img');
+        let brave1 = document.querySelector('.no');
+        let brave2 = document.querySelector('.okay');
+        let brave3 = document.querySelector('.product-img1');
+        let brave4 = document.querySelector('.no1');
+        let brave5 = document.querySelector('.okay1');
+        let brave6 = document.querySelector('.product-img2');
+        let brave7 = document.querySelector('.no2');
+        let brave8 = document.querySelector('.okay2');
+
+
+        if (getItem == "waxing") {
+            brave3.style.display = 'none';
+            brave4.style.display = 'none';
+            brave5.style.display = 'none';
+            brave6.style.display = 'none';
+            brave7.style.display = 'none';
+            brave8.style.display = 'none';
+
+        }
+
+        if (getItem == "haircuts") {
+            brave.style.display = 'none';
+            brave1.style.display = 'none';
+            brave2.style.display = 'none';
+            brave6.style.display = 'none';
+            brave7.style.display = 'none';
+            brave8.style.display = 'none';
+
+        }
+
+
+        if (getItem == "massages") {
+            brave.style.display = 'none';
+            brave1.style.display = 'none';
+            brave2.style.display = 'none';
+            brave3.style.display = 'none';
+            brave4.style.display = 'none';
+            brave5.style.display = 'none';
+
+        }
+
+    </script>
+
+
+
+</body>

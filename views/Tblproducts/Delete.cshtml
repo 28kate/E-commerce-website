@@ -1,0 +1,58 @@
+﻿@model SalonApp.Models.Tblproduct
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="container">
+    <div class="gone">
+        <hr />
+        <div class="sec">
+            <h2 class="b1">Delete Product</h2>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProdName)
+                    @Html.DisplayFor(model => model.ProdName)
+                </dt>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProdPrice)
+                    @Html.DisplayFor(model => model.ProdPrice)
+                </dt>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProdDescrip)
+                    @Html.DisplayFor(model => model.ProdDescrip)
+                </dt>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProdQuantity)
+                    @Html.DisplayFor(model => model.ProdQuantity)
+                </dt>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    <h3>Sure you want to delete?</h3>
+                    <input type="submit" value="Delete" class="button1" />
+                </div>
+            }
+        </div>
+
+        <a>
+            <ul class="bro">
+                <li class="history">  @Html.ActionLink("Back to List", "Index")</li>
+            </ul>
+        </a>
+
+    </div>
+    <</div>
+
+        @section scripts
+ {
+            <link href="~/Content/style8.css" rel="stylesheet" />
+        }

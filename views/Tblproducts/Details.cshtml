@@ -1,0 +1,50 @@
+﻿@model SalonApp.Models.Tblproduct
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tblproduct</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProdName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProdPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProdDescrip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdDescrip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProdQuantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdQuantity)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProdID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

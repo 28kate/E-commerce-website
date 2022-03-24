@@ -1,0 +1,136 @@
+﻿@model SalonApp.Models.OrderMain
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>OrderMain</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.TblCustomerReg.FirstName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TblCustomerReg.FirstName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TblDriverForLogin.Username)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TblDriverForLogin.Username)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DateOrdered)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DateOrdered)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TimeOrdered)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TimeOrdered)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.FinalPrice)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.FinalPrice)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.deliveryDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.deliveryDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DeliveryAddress)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DeliveryAddress)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DeliverySuburb)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DeliverySuburb)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DeliveryZipCode)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DeliveryZipCode)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Delivery)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Delivery)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.deliverystatus)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.deliverystatus)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DeliveryID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DeliveryID)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

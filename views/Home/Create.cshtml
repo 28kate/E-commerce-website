@@ -1,0 +1,118 @@
+﻿@model SalonApp.Models.BlogPost
+@{
+    ViewBag.Title = "Create";
+}
+
+<header>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Ralene's Beauty Salon</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <div class="bs">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "CustomerHome", "CustomerHomeP") </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Appointments <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>@Html.ActionLink("Book Appointment", "Booking", "Appointment")</li>
+                                <li>@Html.ActionLink("Appointment History", "AppointmentTableV")</li>
+                            </ul>
+                        </li>
+                        <li>  @Html.ActionLink("About Us", "Create", "Home")</li>
+                        <li>@Html.ActionLink("Contact Us", "ContactUs", "ContactUs")</li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-shopping-cart"></i>Cart <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>@Html.ActionLink("Products", "Index", "TblOrders")</li>
+                                <li>@Html.ActionLink("My Cart", "CartView", "Cart")</li>
+                                <li>@Html.ActionLink("Order History", "Orders", "Cart")</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-user-circle"></i><span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>@Html.ActionLink("Logout", "LogOut", "CusLogin")"></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+<main>
+    <div class="form-horizontal">
+        <h2>Comments</h2>
+        <h4>Tell us what you think about your experience</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Body, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Body, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="button1" />
+            </div>
+        </div>
+    </div>
+
+    @Html.ActionLink("Currently Trending Treatment", "Index", "NewNew")
+    <br />
+    <br />
+    @Html.ActionLink("Currently Trending Product", "Index", "postcard")
+    <br />
+   
+        <img src="~/Content/Images/arrow.gif" width="100" height="100" />
+ 
+        <img src="~/Content/Images/think.gif" width="100" height="100" />
+
+</main>
+
+    <div class="div2">
+        <footer>
+            <nav>
+                <ul class="list2">
+                    <li><a href="https://www.instagram.com/beauty_by_ralene?r=nametag" target="_blank"><i class="fab fa-instagram-square"></i></a></li>
+                    <li><a href="http://www.facebook.com/beauty_by_ralene-102666234522162/" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
+                </ul>
+            </nav>
+            <h6>&copy;Copyright All rights reserved.</h6>
+        </footer>
+    </div>
+}
+
+
+@section Scripts {
+    <link href="~/Content/style9.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/e042ec49dd.js" crossorigin="anonymous"></script>
+}

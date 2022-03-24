@@ -1,0 +1,47 @@
+﻿@model SalonApp.Models.TblDriverForLogin
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="container">
+
+    <div class="sec">
+        <h2 class="b1">Delete Driver</h2>
+        <h3>Sure you want to delete?</h3>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Username)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Username)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Password)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-danger" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</div>
+
+
+@section scripts
+ {
+    <link href="~/Content/style6.css" rel="stylesheet" />
+}

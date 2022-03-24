@@ -1,0 +1,173 @@
+﻿@model IEnumerable<SalonApp.Models.OrderMain>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="container">
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Ralene's Beauty Salon</a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <div class="bs">
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Home", "AdminLogin", "Admin") </li>
+                            <li>@Html.ActionLink("Appointments", "Index", "TblAppointments")</li>
+                            <li>@Html.ActionLink("Admins", "Index", "TblAdmins")</li>
+                            <li>@Html.ActionLink("Comments", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Driver", "Index", "TblDriverForLogins")</li>
+                            <li>@Html.ActionLink("Refunds", "Index", "AdminProcessRefund")</li>
+
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Deliveries<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("View Current Deliveries", "IndexDeliveries", "TblDeliveries")</li>
+                                    <li>@Html.ActionLink("Manage Deliveries", "Index", "AdminManageDeliveries")</li>
+                                    <li>@Html.ActionLink("View Pending Delivery Requests", "Index", "AdminPendingDeliveries")</li>
+
+                                </ul>
+                            </li>
+
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Analyze Product<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("Sales tracker", "AdminOrders")</li>
+                                    <li>@Html.ActionLink("Quantity/Sales Statistics", "Index", "Chart")</li>
+                                    <li>@Html.ActionLink("Product Evaluation", "Index", "Stat")</li>
+                                    <li>@Html.ActionLink("Service Evaluation", "Index", "Stat")</li>
+                                    <li>@Html.ActionLink("User Tracking", "Index", "sign")</li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-shopping-cart"></i>Orders<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("Orders", "Index", "TblOrders")</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-user-circle"></i><span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("Logout", "LogOut", "CusLogin")"></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <h1 class="b1"></h1>
+        <h1 class="b1"></h1>
+        <table class="table">
+            <thead>
+                <tr>
+
+                    <th class="pls1">
+                        @Html.DisplayNameFor(model => model.DateOrdered)
+                    </th>
+                    <th class="pls1">
+                        @Html.DisplayNameFor(model => model.TimeOrdered)
+                    </th>
+                    <th class="pls1">
+                        @Html.DisplayNameFor(model => model.FinalPrice)
+                    </th>
+                    <th class="pls1">
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+                    <th class="pls1">
+                        @Html.DisplayNameFor(model => model.deliveryDate)
+                    </th>
+                    <th class="pls1">
+                        @Html.DisplayNameFor(model => model.DeliveryAddress)
+                    </th>
+                    <th class="pls1">
+                        @Html.DisplayNameFor(model => model.DeliverySuburb)
+                    </th>
+                    <th class="pls1">
+                        @Html.DisplayNameFor(model => model.DeliveryZipCode)
+                    </th>
+                    <th class="pls1">
+                        @Html.DisplayNameFor(model => model.Delivery)
+                    </th>
+                    <th class="pls1">
+                        @Html.DisplayNameFor(model => model.TblDriverForLogin.Username)
+                    </th>
+                    <th class="pls1">
+                        @Html.DisplayNameFor(model => model.deliverystatus)
+                    </th>
+                    <th class="pls1">
+                        @Html.DisplayNameFor(model => model.DeliveryID)
+                    </th>
+
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td class="pls2">
+                        @Html.DisplayFor(modelItem => item.DateOrdered)
+                    </td>
+                    <td class="pls2">
+                        @Html.DisplayFor(modelItem => item.TimeOrdered)
+                    </td>
+                    <td class="pls2">
+                        @Html.DisplayFor(modelItem => item.FinalPrice)
+                    </td>
+                    <td class="pls2">
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td class="pls2">
+                        @Html.DisplayFor(modelItem => item.deliveryDate)
+                    </td>
+                    <td class="pls2">
+                        @Html.DisplayFor(modelItem => item.DeliveryAddress)
+                    </td>
+                    <td class="pls2">
+                        @Html.DisplayFor(modelItem => item.DeliverySuburb)
+                    </td>
+                    <td class="pls2">
+                        @Html.DisplayFor(modelItem => item.DeliveryZipCode)
+                    </td>
+                    <td class="pls2">
+                        @Html.DisplayFor(modelItem => item.Delivery)
+                    </td>
+                    <td class="pls2">
+                        @Html.DisplayFor(modelItem => item.TblDriverForLogin.Username)
+                    </td>
+                    <td class="pls2">
+                        @Html.DisplayFor(modelItem => item.deliverystatus)
+                    </td>
+                    <td class="pls2">
+                        @Html.DisplayFor(modelItem => item.DeliveryID)
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </main>
+</div>
+
+
+
+
+@section scripts
+ {
+    <script src="https://kit.fontawesome.com/e042ec49dd.js" crossorigin="anonymous"></script>
+    <link href="~/Content/style8.css" rel="stylesheet" />
+}

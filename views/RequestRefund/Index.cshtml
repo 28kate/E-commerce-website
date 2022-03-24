@@ -1,0 +1,133 @@
+﻿@model IEnumerable<SalonApp.Models.OrderMain>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <video class="salvid" src="https://ralenevideo.blob.core.windows.net/salonvideo/hvid.mp4" muted loop autoplay></video>
+
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Ralene's Beauty Salon</a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <div class="bs">
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Home", "CustomerHome", "CustomerHomeP") </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Appointments <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("Book Appointment", "Booking", "Appointment")</li>
+                                    <li>@Html.ActionLink("Appointment History", "AppointmentTableV", "Appointment")</li>
+                                </ul>
+                            </li>
+                            <li>  @Html.ActionLink("About Us", "Create", "Home")</li>
+                            <li>@Html.ActionLink("Contact Us", "ContactUs", "ContactUs")</li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-shopping-cart"></i>Cart <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("Products", "Index", "TblOrders")</li>
+                                    <li>@Html.ActionLink("My Cart", "CartView", "Cart")</li>
+                                    <li>@Html.ActionLink("Order History", "Orders", "Cart")</li>
+                                    <li> @Html.ActionLink("Request a Refund", "Index", "RequestRefund")</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-user-circle"></i><span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("Logout", "LogOut", "CusLogin")"></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <br/>
+        <table class="content-table">
+            <thead>
+                <tr>
+                    <th class="pls1">
+                        @Html.DisplayNameFor(model => model.TblCustomerReg.FirstName)
+                    </th>
+
+                    <th class="pls1">
+                        @Html.DisplayNameFor(model => model.DateOrdered)
+                    </th>
+
+                    <th class="pls1">
+                        @Html.DisplayNameFor(model => model.FinalPrice)
+                    </th>
+
+
+
+                    <th class="pls1">
+                        @Html.DisplayNameFor(model => model.deliverystatus)
+                    </th>
+
+
+                </tr>
+            </thead>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="pls2">
+                        @Html.DisplayFor(modelItem => item.TblCustomerReg.FirstName)
+                    </td>
+
+                    <td class="pls2">
+                        @Html.DisplayFor(modelItem => item.DateOrdered)
+                    </td>
+
+                    <td class="pls2">
+                        @Html.DisplayFor(modelItem => item.FinalPrice)
+                    </td>
+
+
+                    <td class="pls2">
+                        @Html.DisplayFor(modelItem => item.deliverystatus)
+                    </td>
+
+                    <td class="pls2">
+                        @Html.ActionLink("Request A Refund", "RequestRefund", new { id = item.Id }) |
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </main>
+    <div class="div2">
+        <footer>
+            <nav>
+                <ul class="list2">
+                    <li><a href="https://www.instagram.com/beauty_by_ralene?r=nametag" target="_blank"><i class="fab fa-instagram-square"></i></a></li>
+                    <li><a href="http://www.facebook.com/beauty_by_ralene-102666234522162/" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
+                </ul>
+            </nav>
+            <h6>&copy;Copyright All rights reserved.</h6>
+        </footer>
+    </div>
+</div>
+
+
+
+@section scripts
+ {
+    <script src="https://kit.fontawesome.com/e042ec49dd.js" crossorigin="anonymous"></script>
+    <link href="~/Content/style17.css" rel="stylesheet" />
+}

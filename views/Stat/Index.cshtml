@@ -1,0 +1,328 @@
+﻿<!--Add the model you are receiving-->
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Ralene's Beauty Salon</a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <div class="bs">
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Home", "AdminLogin", "Admin") </li>
+                            <li>@Html.ActionLink("Appointments", "Index", "TblAppointments")</li>
+                            <li>@Html.ActionLink("Admins", "Index", "TblAdmins")</li>
+                            <li>@Html.ActionLink("Comments", "Index", "Home")</li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Analyze Product<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("Sales tracker", "AdminOrders")</li>
+                                    <li>@Html.ActionLink("Quantity/Sales Statistics", "Index", "Chart")</li>
+                                    <li>@Html.ActionLink("Product Evaluation", "Index", "Stat")</li>
+                                    <li>@Html.ActionLink("Service Evaluation", "Index", "Stat")</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-shopping-cart"></i>Orders<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("Orders", "Index", "TblOrders")</li>                           
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fas fa-user-circle"></i><span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLink("Logout", "LogOut", "CusLogin")"></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <style type="text/css">
+        .ChartBox {
+            width: 400px;     
+        }
+
+
+        .buttonk {
+            width: 100px;
+            height: 30px;
+            outline: none;
+            border-radius: 48px;
+            background-color: rgb(176, 170, 170);
+            text-transform: uppercase;
+            font-weight: 500;
+            color: antiquewhite;
+            position: relative;
+            top: -10px;
+            margin-top: 20px;
+        }
+
+            .buttonk:hover {
+                background-color: transparent;
+                color: rgb(116, 114, 114);
+                border: 2px solid rgb(116, 114, 114);
+                cursor: pointer;
+            }
+
+        .stupid {
+            position: relative;
+            bottom: -190px;
+            right: -60px;
+        }
+
+        .getout{
+            position:relative;
+            right:-970px;
+            top:-440px;
+
+        }
+
+      #fuck{
+          display:none;
+          visibility:hidden;
+         
+      }
+        #suck {
+            display: none;
+            visibility: hidden;
+        }
+
+    </style>
+
+
+    <form name="listForm" class="stupid" onsubmit="return false">
+        <input type="checkbox" name="choice" value="25" id="1" onchange="checkTotal()" />Low amount of quantity sold<br />
+        <br />
+        <input type="checkbox" name="choice" value="25" id="2" onchange="checkTotal()" />Poor amount of generated sales<br />
+        <br />
+        <input type="checkbox" name="choice" value="15" id="3" onchange="checkTotal()" />Least amount of interaction regarding feedback on product from clients<br />
+        <br />
+        <input type="checkbox" name="choice" value="25" id="4" onchange="checkTotal()" />Is not currently trending in the market<br />
+        <br />
+        <input type="checkbox" name="choice" value="10" id="5" onchange="checkTotal()" />Recently added but poor results overall<br />
+        <br />
+        <input type="text" id="fuck" size="2" name="total" value="0" />
+        <input type="text" id="suck" size="2" name="failtotal" value="0" />
+        <br />
+        <br />
+        Suggestion: <input type="text" size="90" name="wonder" value="Unavailable" />
+        <br />
+        <br />
+        Status: <input type="text" size="20" name="likey" value="Unavailable" />
+        <br />
+        <br />
+        <input type="submit" value="Evaluate" class="buttonk" id="updateChart" />
+
+        <div class="getout">
+            <div class="ChartBox">
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+
+    </form>
+
+
+</div>
+
+
+
+
+
+
+@section Scripts {
+    <script src="https://kit.fontawesome.com/e042ec49dd.js" crossorigin="anonymous"></script>
+    <link href="~/Content/style2.css" rel="stylesheet" />
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.1/papaparse.min.js"></script>
+    <script>
+     
+        function checkTotal() {
+            document.listForm.total.value = '';
+            var sum = 100;
+            for (i = 0; i < document.listForm.choice.length; i++) {
+                if (document.listForm.choice[i].checked) {
+                    sum = sum - parseInt(document.listForm.choice[i].value);
+
+                }
+            }
+            document.listForm.total.value = sum;
+            document.listForm.failtotal.value = 100 - sum;
+
+
+            document.listForm.wonder.value = 'Unavailable';
+            document.listForm.likey.value = 'Unavailable';
+
+            var wtf1 = document.listForm.choice[0].checked;
+            var wtf2 = document.listForm.choice[1].checked;
+            var wtf3 = document.listForm.choice[2].checked;
+            var wtf4 = document.listForm.choice[3].checked;
+            var wtf5 = document.listForm.choice[4].checked;
+
+            if (wtf1) {
+                document.listForm.wonder.value = "Advertise the product more to increase the quantity sold";
+                document.listForm.likey.value = "Potential for growth";
+            }
+
+
+            else if (wtf2) {
+                document.listForm.wonder.value = "Decrease the cost of the product as it might be too expensive";
+                document.listForm.likey.value = "Potential for growth";
+            }
+
+            else if (wtf3) {
+                document.listForm.wonder.value = "Communicate with your clients more regarding feedback on the product.";
+                document.listForm.likey.value = "Potential for growth";
+            }
+
+            else if (wtf4) {
+                document.listForm.wonder.value = "Improve your market strategy to see better results in future";
+                document.listForm.likey.value = "Potential for growth";
+            }
+
+            else if (wtf5) {
+                document.listForm.wonder.value = "Wait a little,it takes time for a product to be noticed on the market";
+                document.listForm.likey.value = "Potential for growth";
+            }
+
+            if (wtf1 && wtf2) {
+                document.listForm.wonder.value = "Advertize the product more and import lower quantity to sell";
+                document.listForm.likey.value = "Difficult to improve";
+            }
+
+            else if (wtf1 && wtf3) {
+                document.listForm.wonder.value = "Make it vital to communicate with clients personally and understand reasons for disinterest";
+                document.listForm.likey.value = "Difficult to improve";
+            }
+
+            else if (wtf1 && wtf4) {
+                document.listForm.wonder.value = "Post more on social media accounts and try to start a trend with hashtags";
+                document.listForm.likey.value = "Difficult to improve";
+            }
+
+            else if (wtf1 && wtf5) {
+                document.listForm.wonder.value = "Wait atleast two months,if no changes occur, revaluate the product";
+                document.listForm.likey.value = "Difficult to improve";
+            }
+
+            else if (wtf2 && wtf3) {
+                document.listForm.wonder.value = "Interact more via the  comment section with clients and buy import smaller quantity to be safe";
+                document.listForm.likey.value = "Difficult to improve";
+            }
+
+            else if (wtf2 && wtf4) {
+                document.listForm.wonder.value = "Offer discounts and promotions to clients who advertise products for you e.g free giveaways";
+                document.listForm.likey.value = "Difficult to improve";
+            }
+
+            else if (wtf2 && wtf5) {
+                document.listForm.wonder.value = "Don't be so impatient, Rome was not built in a day, wait two months";
+                document.listForm.likey.value = "Difficult to improve";
+            }
+
+            else if (wtf3 && wtf4) {
+                document.listForm.wonder.value = "Offer coupons to clients or enquire if they would like to be involved with promotions more";
+                document.listForm.likey.value = "Difficult to improve";
+            }
+
+            else if (wtf3 && wtf5) {
+                document.listForm.wonder.value = "You should only evaluate a product after two months in the market, have you done this?";
+                document.listForm.likey.value = "Potential for growth";
+            }
+
+            if (document.listForm.total.value <= 40) {
+                document.listForm.wonder.value = "Cut your losses now, it will cost more money to revive the product than making profits"
+                document.listForm.likey.value = "Discontinue Product";
+            }
+
+        }
+
+
+
+
+        //setup
+
+        const data34 = 50;
+        const data35 = 50;
+        const data = {
+            labels: ['Success rate', 'failure rate'],
+            datasets: [{
+                label: 'Amount',
+                data: [data34, data35],
+                backgroundColor: [
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)'
+
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)'
+
+                ],
+                borderWidth: 1,
+                cutout: '70%'
+            }]
+        };
+
+        const counter = {
+            id: 'counter',
+            beforeDraw(chart, args, options) {
+                const { ctx, chartArea: { top, tight, bottom, left, width, height } } = chart;
+                ctx.save();
+                ctx.font = options.fontSize + '' + options.fontFamily;
+                ctx.textAlign = 'center';
+                ctx.fillStyle = options.fontColor;
+                ctx.fillText(value1.value + "%", width / 2, top + (height / 2));
+            }
+        };
+
+        //config
+        const config = {
+            type: 'doughnut',
+            data: data,
+            options: {
+                plugins: {
+                    counter: {
+                        fontColor: 'pink',
+                        fontSize: '75px ',
+                        fontFamily: 'sans-serif'
+                    }
+                }
+            },
+            plugins: [counter]
+
+        };
+
+        //render init
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+
+        const value1 = document.getElementById('fuck');
+        const value2 = document.getElementById('suck');
+        const okay = document.getElementById('updateChart');
+        okay.addEventListener('click', updateDoughnutChart);
+
+        function updateDoughnutChart() {
+            myChart.data.datasets[0].data[0] = value1.value;
+            myChart.data.datasets[0].data[1] = value2.value;
+            myChart.update();
+        }
+
+    </script>
+}

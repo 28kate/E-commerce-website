@@ -1,0 +1,151 @@
+﻿@model IEnumerable<SalonApp.Models.TblOrders>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+
+    <main>
+        <style type="text/css">
+            td {
+                padding: 0 15px;
+            }
+        </style>
+
+
+        <h1 class="sos">Products</h1>
+        @if (Session["TypeUser"].ToString() == "Customer")
+        {
+            @Html.ActionLink("Go To Cart", "CartView", "Cart")
+            <br />
+            @Html.ActionLink("Back", "CustomerHome", "CustomerHomeP")
+        }
+
+
+        @if (Session["TypeUser"].ToString() == "Admin")
+        {
+            <p>
+                @Html.ActionLink("Add Product", "Create")
+            </p>
+        }
+
+        @if (Model.Count() > 0)
+        {
+            <table class="content-table">
+                <thead>
+                    <tr>
+                        <th class="pls">
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th class="pls">
+                            @Html.DisplayNameFor(model => model.Price)
+                        </th>
+                        <th class="pls">
+                            @Html.DisplayNameFor(model => model.Desc)
+                        </th>
+                        <th class="pls">
+                            @Html.DisplayNameFor(model => model.Quantity)
+                        </th>
+                        <th class="pls">
+                            @Html.DisplayNameFor(model => model.Image)
+                        </th>
+                        @if (Session["TypeUser"].ToString() == "Customer")
+                        {
+                            <th>Add Quantity</th>
+                            <th></th>
+                        }
+                        @if (Session["TypeUser"].ToString() == "Admin")
+                        {
+                            <th></th>
+                        }
+                    </tr>
+                </thead>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="pls2">
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td class="pls2">
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                        <td class="pls2">
+                            @Html.DisplayFor(modelItem => item.Desc)
+                        </td>
+                        <td class="pls2">
+                            @Html.DisplayFor(modelItem => item.Quantity)
+                        </td>
+                        <td class="pls2">
+                            @{                
+                                        var base64 = Convert.ToBase64String(item.Image);
+                                        var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+                                    
+                                    }
+                                
+
+                            <img src="@imgsrc" style="max-width: 100px; max-height: 100px" />
+                        </td>
+                        @if (Session["TypeUser"].ToString() == "Customer")
+                        {
+                            using (Html.BeginForm("AddCart", "Cart", FormMethod.Post))
+                            {
+                                <td>
+                                    <input type="number" value="1" min="1" max="@item.Quantity" step="1" name="Quan" id="Quan" class="form-control" onkeydown="return false" />
+                                </td>
+                                <td>
+
+                                    <input type="hidden" value="@item.Id" name="ItemId" id="ItemId" />
+                                    <input type="submit" value="Add To Cart" class="btn btn-success" />
+
+                                </td>
+                            }
+                        }
+                        @if (Session["TypeUser"].ToString() == "Admin")
+                        {
+                            <td>
+                                <button class="btn btn-success"> @Html.ActionLink("Edit", "Edit", new { id = item.Id }) </button>
+                                <button class="btn btn-danger">   @Html.ActionLink("Delete", "Delete", new { id = item.Id }) </button>
+                            </td>
+                        }
+                    </tr>
+                }
+
+            </table>
+        }
+
+        else
+        {
+            <p>There are no items</p>
+        }
+
+        <br />
+        <br />
+
+        @if (Session["TypeUser"].ToString() == "Admin")
+        {
+            <p>
+                @Html.ActionLink("Back To Home", "AdminLogin", "Admin")
+            </p>
+        }
+
+        @if (Session["TypeUser"].ToString() == "Customer")
+        {
+            <p>
+                @Html.ActionLink("Back To Home", "CustomerHome", "CustomerHomeP")
+            </p>
+        }
+
+        <div class="bleh">
+            <h4>Ralene's Beauty Salon</h4>
+            <h4>&copy;Copyright All rights reserved.</h4>
+        </div>
+    </main>
+</div>
+
+@section scripts
+ {
+    <link href="~/Content/style5.css" rel="stylesheet" />
+
+}

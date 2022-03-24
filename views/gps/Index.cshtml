@@ -1,0 +1,308 @@
+﻿
+@{
+    Layout = null;
+}
+
+<body>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://kit.fontawesome.com/ab2155e76b.js" crossorigin="anonymous"></script>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="from" class="col-xs-2 control-label"><i class="far fa-dot-circle"></i></label>
+            <div class="col-xs-4">
+                <input type="text" id="from" placeholder="Origin" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+
+            <label for="to" class="col-xs-2 control-label"><i class="fas fa-map-marker-alt"></i></label>
+            <div class="col-xs-4">
+                <input type="text" id="to" placeholder="Destination" class="form-control">
+            </div>
+
+        </div>
+
+
+        <br />
+
+
+    </form>
+
+    <div class="iconic">
+        <img src="~/Content/Images/delivery-box.png" alt="wtf" width="40" height="40" />
+        <img src="~/Content/Images/deliver.png" alt="wtf" width="40" height="40" />
+        <img src="~/Content/Images/alarm-clock.png" alt="wtf" width="40" height="40" />
+        <img src="~/Content/Images/delivery-man.png" alt="wtf" width="40" height="40" />
+        <img src="~/Content/Images/delivery-courier.png" alt="wtf" width="40" height="40" />
+    </div>
+    <div id="progress">
+        <div id="progress-bar"></div>
+    </div>
+
+    <!--button onclick="timer()">START</button-->
+    <button id="button" onclick="myFunction()">Start Delivery</button>
+
+    <form id="frm1">
+        <br>
+        <h2 id="demo"></h2>
+        <input type="text" name="fname" value="" placeholder="Enter data" requires>Hrs<br>
+        <input type="text" name="lname" value="" placeholder="Enter data" required>Min<br><br>
+
+    </form>
+    <div id="container">
+        <div id="sidebar"></div>
+        <div id="map"></div>
+    </div>
+
+    <div style="display: none">
+    </div>
+
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQ21YI9Y836zL4jaFS9_qFIqi9-3--o-c&callback=initMap&v=weekly"
+            async></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            height: 100%;
+            display: flex;
+        }
+
+        #sidebar {
+            flex-basis: 15rem;
+            flex-grow: 1;
+            padding: 1rem;
+            max-width: 25rem;
+            height: 60%;
+            box-sizing: border-box;
+            overflow: auto;
+            position: relative;
+            top: -150px;
+        }
+
+        #map {
+            width: 80%;
+            height: 400px;
+            margin: 10px auto;
+            position: relative;
+            top: -150px;
+        }
+
+        #floating-panel {
+            position: absolute;
+            top: 10px;
+            left: 25%;
+            z-index: 5;
+            background-color: #fff;
+            padding: 5px;
+            border: 1px solid #999;
+            text-align: center;
+            font-family: "Roboto", "sans-serif";
+            line-height: 30px;
+            padding-left: 10px;
+        }
+
+        #floating-panel {
+            background-color: #fff;
+            border: 0;
+            border-radius: 2px;
+            box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
+            margin: 10px;
+            padding: 0 0.5em;
+            font: 400 18px Roboto, Arial, sans-serif;
+            overflow: hidden;
+            padding: 5px;
+            font-size: 14px;
+            text-align: center;
+            line-height: 30px;
+            height: auto;
+        }
+
+        #map {
+            flex: auto;
+        }
+
+        #sidebar {
+            flex: 0 1 auto;
+            padding: 0;
+        }
+
+            #sidebar > div {
+                padding: 0.5rem;
+            }
+
+
+        #progress {
+            width: 90%;
+            height: 20px;
+            margin: 20px auto;
+            border-radius: 10px;
+            background-color: #fff;
+            border: 1px solid rgb(194, 230, 168);
+        }
+
+        #progress-bar {
+            height: 20px;
+            background-color: rgb(194, 230, 168);
+            border-radius: 10px;
+        }
+
+        button {
+            margin: 0 auto 20px;
+        }
+
+        input {
+            margin: 5px;
+        }
+
+        .fa-map-marker-alt,
+        .fa-dot-circle {
+            color: rgb(115, 208, 115);
+        }
+
+
+
+        .iconic {
+            position: relative;
+            right: -270px;
+            top: -50px;
+            letter-spacing: 205px;
+        }
+
+        #button {
+            position: relative;
+            top: -110px;
+        }
+
+        #frm1 {
+            position: relative;
+            top: -130px;
+        }
+
+        #progress {
+            width: 85%;
+            height: 20px;
+            margin: 20px auto;
+            position: relative;
+            right: -100px;
+            top: -160px;
+            border-radius: 10px;
+            background-color: #fff;
+            border: 1px solid rgb(194, 230, 168);
+        }
+
+        #progress-bar {
+            height: 20px;
+            background-color: rgb(194, 230, 168);
+            border-radius: 10px;
+        }
+
+        button {
+            margin: 0 auto 20px;
+        }
+
+        input {
+            margin: 5px;
+        }
+    </style>
+
+    <script>
+      var t = 0;
+  function myFunction() {
+  var x = document.getElementById("frm1");
+  hr = x.elements[0].value;
+  min = x.elements[1].value
+
+  window.t = hr*3600 + min*60;
+  window.per = window.t;
+  //document.getElementById("demo").innerHTML = hr*3600 + min*60;
+  timer();
+  }
+  function timer(){
+  var temp = window.t;
+  window.t = window.t-1;
+  var h = Math.floor(temp/3600);
+  var m = Math.floor((temp%3600)/60);
+  var s = Math.floor((temp - h*3600 - m*60));
+  m = checkTime(m);
+  s = checkTime(s);
+  document.getElementById("demo").innerHTML = h + "hr:" + m + "min:" + s + "sec";
+  document.getElementById("progress-bar").style.width = (temp*100)/(window.per) + "%";
+
+  var t = setTimeout(timer,1000);
+
+  /*if(temp<900){
+      document.getElementById("progress-bar").style.backgroundColor = "red";
+      document.getElementById("progress").style.borderColor = "red";
+  }*/
+  if (temp < 0) {
+      clearInterval(t);
+      document.getElementById("demo").innerHTML = "Delivery time reached";
+  }
+  }
+  function checkTime(i){
+  if (i<10) { i = "0" + i }
+  return i;
+  }
+    </script>
+    <script>
+    function initMap() {
+    const directionsRenderer = new google.maps.DirectionsRenderer();
+    const directionsService = new google.maps.DirectionsService();
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 7,
+      center: { lat: 41.85, lng: -87.65 },
+      disableDefaultUI: true,
+    });
+
+    directionsRenderer.setMap(map);
+    directionsRenderer.setPanel(document.getElementById("sidebar"));
+
+    const control = document.getElementById("floating-panel");
+
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
+
+    const onChangeHandler = function () {
+      calculateAndDisplayRoute(directionsService, directionsRenderer);
+    };
+
+    document.getElementById("from").addEventListener("change", onChangeHandler);
+    document.getElementById("to").addEventListener("change", onChangeHandler);
+
+
+  }
+
+
+  function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+    const start = document.getElementById("from").value;
+    const end = document.getElementById("to").value;
+
+    directionsService
+      .route({
+        origin: start,
+        destination: end,
+        travelMode: google.maps.TravelMode.DRIVING,
+      })
+      .then((response) => {
+        directionsRenderer.setDirections(response);
+      })
+
+
+
+  }
+
+
+    </script>
+
+</body>

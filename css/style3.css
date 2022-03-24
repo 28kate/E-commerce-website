@@ -1,0 +1,159 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    width: 100vw;
+    background-color: rgb(227, 247, 243);
+}
+
+.container {
+    width: 1000px;
+    position:relative;
+    margin: 0 auto;
+}
+
+main{
+    position:relative;
+    left:-180px;
+}
+
+
+header {
+    height: 100px;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    padding: 35px;
+    position: relative;
+    top: -13px;
+}
+
+.list1 {
+    list-style-type: none;
+}
+
+    .list1 li {
+        display: inline-block;
+        padding: 15px;
+        font-weight: 700;
+        position: relative;
+        padding: 37px;
+        top: -35px;
+        left: 13px;
+    }
+
+ul li a {
+    text-decoration: none;
+    color: rgb(234, 231, 219);
+}
+
+#home {
+    border: 2px solid rgb(234, 231, 219);
+    padding: 5px;
+}
+
+.list1 li a:hover {
+    border: 2px solid rgb(234, 231, 219);
+    padding: 5px;
+    cursor: pointer;
+}
+
+
+.hiadd {
+    margin: 0 auto;
+    align-items: center;
+    text-align: center;
+    width: 600px;
+    height: 350px;
+    font-size: 3.2rem;
+    color: rgb(189, 130, 140);
+    position: relative;
+    top: 70px;
+}
+
+
+
+.search {
+    position: relative;
+    top: 20px;
+    left: 180px;
+    margin: 0 auto;
+}
+
+.content-table {
+    position: relative;
+    top: 40px;
+    border-collapse: collapse;
+    margin: 0 auto;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 10px 10px 0 0;
+}
+
+    .content-table thead tr {
+        background-color: rgb(228, 185, 111);
+        color: #ffffff;
+        text-align: left;
+        font-weight: bold;
+        font-size: 2rem;
+        color: #ffffff;
+    }
+
+    .content-table th,
+    .content-table td {
+        padding: 16px 45px;
+        font-weight: 400;
+        font-size:2rem
+    }
+
+    .content-table tbody tr {
+        border-bottom: 2px solid #dddddd;
+    }
+
+        .content-table tbody tr:nth-of-type(even) {
+            background-color: rgb(191, 181, 181);
+        }
+
+        .content-table tbody tr:nth-of-type(odd) {
+            background-color: rgb(143, 141, 141);
+        }
+
+        .content-table tbody tr:last-of-type {
+            border-bottom: 5px solid #dddddd;
+        }
+
+
+.bro {
+    list-style-type: none;
+    color: rgb(70, 24, 70);
+    font-size: 20px;
+}
+
+
+.button1 {
+    width: 100px;
+    height: 30px;
+    outline: none;
+    border-radius: 48px;
+    background-color: rgb(51, 125, 66);
+    text-transform: uppercase;
+    font-weight: 500;
+    color: antiquewhite;
+    position: relative;
+    top: -10px;
+}
+
+    .button1:hover {
+        background-color: transparent;
+        color: #23a292;
+        border: 2px solid rgb(51, 125, 66);
+        cursor: pointer;
+    }
+
+    .confirm{
+        margin:0 auto;
+    }

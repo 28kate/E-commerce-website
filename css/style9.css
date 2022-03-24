@@ -1,0 +1,220 @@
+﻿* {
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    background-color: rgb(227, 247, 243);
+}
+
+.container {
+    width: 1000px;
+    position: relative;
+    left: -18px;
+    margin-left: 0;
+}
+
+main {
+    width: 100vw;
+    margin-left: 0;
+    padding: 30px 30px;
+    height: 40vh;
+}
+
+header {
+    position: sticky;
+    margin-right: 0;
+}
+
+.navbar-default {
+    background-color: #333333;
+    border-color: #222222;
+    width: 100%;
+    margin: 0 auto;
+    z-index: 12;
+    position: fixed;
+}
+
+.bs {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navbar-default .navbar-brand {
+    color: #ffffff;
+}
+
+    .navbar-default .navbar-brand:hover,
+    .navbar-default .navbar-brand:focus {
+        color: #ffffff;
+        background-color: transparent;
+    }
+
+.navbar-default .navbar-text {
+    color: #ffffff;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #ffffff;
+}
+
+    .navbar-default .navbar-nav > li > a:hover,
+    .navbar-default .navbar-nav > li > a:focus {
+        color: #ffffff;
+        background-color: #272727;
+    }
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #ffffff;
+    background-color: #272727;
+}
+
+.navbar-default .navbar-nav > .disabled > a,
+.navbar-default .navbar-nav > .disabled > a:hover,
+.navbar-default .navbar-nav > .disabled > a:focus {
+    color: #cccccc;
+    background-color: transparent;
+}
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+    color: #ffffff;
+    background-color: #272727;
+}
+
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: #ffffff;
+    }
+
+        .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+        .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+            color: #ffffff;
+            background-color: #272727;
+        }
+
+    .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+    .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+        color: #ffffff;
+        background-color: #272727;
+    }
+
+    .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a,
+    .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+        color: #cccccc;
+        background-color: transparent;
+    }
+}
+
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+}
+
+    .navbar-default .navbar-toggle:hover,
+    .navbar-default .navbar-toggle:focus {
+        background-color: transparent;
+    }
+
+    .navbar-default .navbar-toggle .icon-bar {
+        background-color: #ffffff;
+    }
+
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+    border-color: #222222;
+}
+
+.navbar-default .navbar-link {
+    color: #ffffff;
+}
+
+    .navbar-default .navbar-link:hover {
+        color: #ffffff;
+    }
+
+.navbar-default .btn-link {
+    color: #ffffff;
+}
+
+    .navbar-default .btn-link:hover,
+    .navbar-default .btn-link:focus {
+        color: #ffffff;
+    }
+
+    .navbar-default .btn-link[disabled]:hover,
+    fieldset[disabled] .navbar-default .btn-link:hover,
+    .navbar-default .btn-link[disabled]:focus,
+    fieldset[disabled] .navbar-default .btn-link:focus {
+        color: #cccccc;
+    }
+
+
+.div2 {
+    background-color: #333333;
+    border-color: #222222;
+    width: 100%;
+    margin: 0 auto;
+    z-index: 12;
+    position: fixed;
+    height: 70px;
+    bottom: -4px;
+}
+
+
+footer {
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+    font-size: 3px;
+}
+
+
+.list2 {
+    list-style-type: none;
+}
+
+
+    .list2 li {
+        display: inline-block;
+        padding: 4px;
+        font-size: 14px;
+        background: #171515;
+        border-radius: 50%;
+        position: relative;
+    }
+
+
+        .list2 li:hover {
+            border: 3px solid #ed7a9c;
+        }
+
+        .list2 li:nth-child(2):hover {
+            border: 3px solid #ADD8E6;
+        }
+
+
+.button1 {
+    width: 100px;
+    height: 30px;
+    outline: none;
+    border-radius: 48px;
+    background-color: rgb(51, 125, 66);
+    text-transform: uppercase;
+    font-weight: 500;
+    color: antiquewhite;
+    position: relative;
+    top: -10px;
+}
+
+    .button1:hover {
+        background-color: transparent;
+        color: #23a292;
+        border: 2px solid rgb(51, 125, 66);
+        cursor: pointer;
+    }

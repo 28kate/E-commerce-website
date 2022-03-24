@@ -1,0 +1,87 @@
+﻿* {
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    background-color: rgb(227, 247, 243);
+}
+
+.container {
+    width: 1000px;
+    position: relative;
+    left: -15px;
+    margin-left: 0;
+}
+
+main {
+    width: 100vw;
+    margin-left: 0;
+    padding: 30px 30px;
+    height: 40vh;
+}
+
+header {
+    position: sticky;
+    margin-right: 0;
+}
+
+.navbar-default {
+    background-color: #333333;
+    border-color: #222222;
+    width: 100%;
+    margin: 0 auto;
+    z-index: 12;
+    position: fixed;
+}
+
+.bs {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navbar-default .navbar-brand {
+    color: #ffffff;
+}
+
+    .navbar-default .navbar-brand:hover,
+    .navbar-default .navbar-brand:focus {
+        color: #ffffff;
+        background-color: transparent;
+    }
+
+.navbar-default .navbar-text {
+    color: #ffffff;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #ffffff;
+}
+
+    .navbar-default .navbar-nav > li > a:hover,
+    .navbar-default .navbar-nav > li > a:focus {
+        color: #ffffff;
+        background-color: #272727;
+    }
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #ffffff;
+    background-color: #272727;
+}
+
+.navbar-default .navbar-nav > .disabled > a,
+.navbar-default .navbar-nav > .disabled > a:hover,
+.navbar-default .navbar-nav > .disabled > a:focus {
+    color: #cccccc;
+    background-color: transparent;
+}
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+    color: #ffffff;
+    background-color: #272727;
+}

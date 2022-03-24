@@ -1,0 +1,91 @@
+﻿body {
+    background-color: rgb(219, 247, 243);
+}
+
+
+.idgaf5 {
+    position: relative;
+    left: 500px;
+    top: -700px;
+}
+
+.idgaf4 {
+    position: relative;
+    left: 700px;
+    top: -100px;
+}
+
+
+.button1 {
+    width: 100px;
+    height: 30px;
+    outline: none;
+    border-radius: 48px;
+    background-color: #23a292;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: antiquewhite;
+    position: relative;
+    top: -10px;
+}
+
+    .button1:hover {
+        background-color: transparent;
+        color: #23a292;
+        border: 2px solid #23a292;
+        cursor: pointer;
+    }
+
+
+
+.button2 {
+    width: 100px;
+    height: 30px;
+    outline: none;
+    border-radius: 48px;
+    background-color: #23a292;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: antiquewhite;
+    position: relative;
+    top:10px; 
+}
+
+    .button2:hover {
+        background-color: transparent;
+        color: #23a292;
+        border: 2px solid #23a292;
+        cursor: pointer;
+    }
+
+
+.idgaf2 {
+    position: relative;
+    left: 700px;
+    top: -500px;
+    background-color:darkgrey;
+    border-radius: 100%;
+}
+
+
+
+.button3{
+    width: 100px;
+    height: 30px;
+    outline: none;
+    border-radius: 48px;
+    background-color: #23a292;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: antiquewhite;
+    position: relative;
+    right:200px;
+}
+
+    .button3:hover {
+        background-color: transparent;
+        color: #23a292;
+        border: 2px solid #23a292;
+        cursor: pointer;
+    }
+
